@@ -5,25 +5,11 @@ import { HiMenu } from "react-icons/hi";
 import { menuState } from "../../atoms/menuAtom";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
-import { useCallback, useEffect } from "react";
-import { getPrincipalRequest } from "../../apis/api/principal";
+import { principalState } from "../../atoms/principalAtom";
 
 function RootHeader() {
     const [ show, setShow ] = useRecoilState(menuState);
-    
-    useEffect(() => {
-        getPrincipal();
-    }, []);
-
-    const getPrincipal = useCallback(() => {
-        getPrincipalRequest()
-        .then(response => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        });
-
-    }, []);
+    const [ principal, setPrincipal ] = useRecoilState(principalState);
 
     const handleOpenClick = () => {
         setShow(() => true);
@@ -34,9 +20,16 @@ function RootHeader() {
             <button css={s.menuButton} onClick={handleOpenClick}>
                 <HiMenu />
             </button>
-            <Link css={s.account} to={"/account"}>
-                <FiUser />
-            </Link>
+            {
+                !principal 
+                ? <Link css={s.account} to={"/auth/signin"}>
+                    <FiUser />
+                </Link>
+                : <Link css={s.account} to={"/account/mypage"}>
+                    <FiUser />
+                </Link>
+            }
+
         </div>
     );
 }
