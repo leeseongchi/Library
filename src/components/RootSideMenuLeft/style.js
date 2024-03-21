@@ -77,7 +77,7 @@ export const authButtons = css`
 export const settings = css`
     display: flex;
     justify-content: flex-end;
-    padding: 5px 15px;
+    padding: 5px 10px;
 
     & > * {
         padding: 5px;
@@ -113,14 +113,13 @@ export const usernameAndEmail = css`
     & > span:nth-of-type(1) {
         font-weight: 600;
     }
-
     & > span:nth-of-type(2) {
         font-size: 12px;
     }
 `;
 
 export const menuList = css`
-    
+
 `;
 
 export const menuLink = css`
