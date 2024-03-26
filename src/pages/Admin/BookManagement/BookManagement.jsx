@@ -12,6 +12,7 @@ import { storage } from "../../../apis/api/firebase/config/firebaseConfig";
 import { v4 as uuid } from "uuid";
 import RightTopButton from "../../../components/RightTopButton/RightTopButton";
 import { registerBook } from "../../../apis/api/bookApi";
+import AdminBookSearch from "../../../components/AdminBookSearch/AdminBookSearch";
 
 function BookManagement(props) {
     const [bookTypeOptions, setBookTypeOptions] = useState([]);
@@ -72,7 +73,7 @@ function BookManagement(props) {
 
         }
     });
-    
+
     const nextInput = (ref) => {
         ref.current.focus();
     }
@@ -110,15 +111,15 @@ function BookManagement(props) {
     }
 
     const handleFileChange = (e) => {
-        
+
         const files = Array.from(e.target.files);
-        
-        if(files.length === 0) {
+
+        if (files.length === 0) {
             e.target.value = "";
             return;
         }
-        
-        if(!window.confirm("파일을 업로드 하시겠습니까?")) {
+
+        if (!window.confirm("파일을 업로드 하시겠습니까?")) {
             e.target.value = "";
             return;
         }
@@ -128,14 +129,14 @@ function BookManagement(props) {
 
         uploadTask.on(
             "state_changed",
-            snapshot => {},
-            error => {},
+            snapshot => { },
+            error => { },
             () => {
                 alert("업로드를 완료하셨습니다.");
                 getDownloadURL(storageRef)
-                .then(url => {
-                    imgUrl.setValue(() => url);
-                });
+                    .then(url => {
+                        imgUrl.setValue(() => url);
+                    });
             }
         )
     }
@@ -171,9 +172,9 @@ function BookManagement(props) {
                             <td rowSpan={5} css={s.preview}>
                                 <div css={s.imageBox}>
                                     <img src={
-                                        !imgUrl.value 
-                                        ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOU0iaTa57K7OKcsCM3m0tEORCxzbYllHIUQ&usqp=CAU" 
-                                        : imgUrl.value 
+                                        !imgUrl.value
+                                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOU0iaTa57K7OKcsCM3m0tEORCxzbYllHIUQ&usqp=CAU"
+                                            : imgUrl.value
                                     } alt="" />
                                 </div>
                             </td>
@@ -181,9 +182,9 @@ function BookManagement(props) {
                         <tr>
                             <th css={s.registerTh}>도서형식</th>
                             <td>
-                                <Select 
-                                    styles={selectStyle} 
-                                    options={bookTypeOptions} 
+                                <Select
+                                    styles={selectStyle}
+                                    options={bookTypeOptions}
                                     onKeyDown={bookTypeId.handleOnKeyDown}
                                     onChange={bookTypeId.handleOnChange}
                                     ref={inputRefs[2]}
@@ -191,9 +192,9 @@ function BookManagement(props) {
                             </td>
                             <th css={s.registerTh}>카테고리</th>
                             <td>
-                                <Select 
-                                    styles={selectStyle} 
-                                    options={categoryOptions} 
+                                <Select
+                                    styles={selectStyle}
+                                    options={categoryOptions}
                                     onKeyDown={categoryId.handleOnKeyDown}
                                     onChange={categoryId.handleOnChange}
                                     ref={inputRefs[3]}
@@ -259,8 +260,12 @@ function BookManagement(props) {
                         </tr>
                     </tbody>
                 </table>
-                <div></div>
             </div>
+            <AdminBookSearch
+                selectStyle={selectStyle}
+                bookTypeOptions={bookTypeOptions}
+                categoryOptions={categoryOptions}
+            />
         </div>
     );
 }
