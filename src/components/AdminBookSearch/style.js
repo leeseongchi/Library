@@ -60,58 +60,71 @@ export const table = css`
 
     & td, & th {
         border: 1px solid #dbdbdb;
+        padding: 0px 5px;
     }
     & th {
         border-top: none;
     }
-    & tr > td:nth-of-type(1),
-    & tr > th:nth-of-type(1) {
+    & td {
+        font-size: 14px;
+    }
+    & tr > th:nth-of-type(1),
+    & tr > td:nth-of-type(1) {
         border-left: none;
     }
-    & tr > td:nth-last-of-type(1),
-    & tr > th:nth-last-of-type(1) {
+    & tr > th:nth-last-of-type(1),
+    & tr > td:nth-last-of-type(1) {
         border-right: none;
     }
 
-    & tr > td:nth-of-type(1),
-    & tr > th:nth-of-type(1) {
+    & tr > th:nth-of-type(1),
+    & tr > td:nth-of-type(1) {
         text-align: center;
-        width: 30px;
+        min-width: 30px;
     }
 
-    & tr > td:nth-of-type(2),
-    & tr > th:nth-of-type(2) {
-        width: 80px;
+    & tr > th:nth-of-type(2),
+    & tr > td:nth-of-type(2) {
+        min-width: 80px;
     }
 
-    & tr > td:nth-of-type(3),
-    & tr > th:nth-of-type(3) {
-        width: 250px;
+    & tr > td:nth-of-type(2) {
+        text-align: right;
     }
 
-    & tr > td:nth-of-type(4),
-    & tr > th:nth-of-type(4) {
-        width: 150px;
+    & tr > th:nth-of-type(3),
+    & tr > td:nth-of-type(3) {
+        min-width: 250px;
     }
 
-    & tr > td:nth-of-type(5),
-    & tr > th:nth-of-type(5) {
-        width: 150px;
+    & tr > th:nth-of-type(4),
+    & tr > td:nth-of-type(4) {
+        min-width: 150px;
     }
 
-    & tr > td:nth-of-type(6),
-    & tr > th:nth-of-type(6) {
-        width: 150px;
+    & tr > th:nth-of-type(5),
+    & tr > td:nth-of-type(5) {
+        min-width: 150px;
     }
 
-    & tr > td:nth-of-type(7),
-    & tr > th:nth-of-type(7) {
-        width: 100px;
+    & tr > th:nth-of-type(6),
+    & tr > td:nth-of-type(6) {
+        min-width: 150px;
     }
 
-    & tr > td:nth-of-type(8),
-    & tr > th:nth-of-type(8) {
-        width: 100px;
+    & tr > th:nth-of-type(7),
+    & tr > td:nth-of-type(7) {
+        min-width: 100px;
+    }
+
+    & tr > th:nth-of-type(8),
+    & tr > td:nth-of-type(8) {
+        min-width: 100px;
+    }
+
+    & tr > th:nth-of-type(9),
+    & tr > td:nth-of-type(9) {
+        min-width: 100px;
     }
 `;
 
